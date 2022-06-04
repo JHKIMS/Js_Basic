@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./tutorial.css">
+    <title>재시작</title>
+</head>
+
+<body>
+
+    <h1 id="hello">안녕하세요 1번째입니다.</h1>
+
+    <div class="alert-box" id="alert">알림창 띄우기
+
+        <p id="title">내용 바꾸는중</p>
+        <p class="testClass">클래스테스트</p>
+    </div>
+
+    <button onclick="document.getElementById('alert').style.display='block'">
+        열기버튼</button>
+
+
+    <button onclick="onOff('none')">닫기버튼</button>
+    <button id="close">이벤트로 닫기</button>
+
+    <button onclick="change()">버튼 1 테스트</button>
+    <button onclick="password()">버튼 2 테스트</button>
+
+
+    <script>
+        document.getElementById('hello').style.fontSize = '16px';
+        
+        function onOff(test) {
+            document.getElementById('alert').style.display = test;
+        }
+
+        function plus(num) {
+            2 + num
+        }
+
+        function change() {
+            document.getElementsByClassName('testClass')[0].innerHTML = '파랭이다.';
+            // getElementByClassName은 [] 인덱스로 접근해야한다.
+
+            document.getElementById('alert').style.display = 'block';
+        }
+
+        function password() {
+            document.getElementById('title').innerHTML = '가나다라.';
+            document.getElementById('alert').style.display = 'block';
+        }
+
+        document.getElementById('close').addEventListener('click', function () {
+            document.getElementById('alert').style.display = 'none';
+        });
+        // 다양한 이벤트는 구글링
+    </script>
+</body>
+
+</html>
