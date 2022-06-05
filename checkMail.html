@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email-Check</title>
+    <!-- jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <form action="success.html">
+        <div class="my-3">
+            <input type="text" class="form-control" id="email">
+        </div>
+        <div class="my-3">
+            <input type="password" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="send">전송</button>
+        <button type="button" class="btn btn-danger" id="close">닫기</button>
+    </form>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(e){
+            var dummy = document.querySelector('#email').value;
+            console.log(dummy);
+            if(dummy == ''){
+                alert('아이디 입력 안함');
+            }
+
+            if(/\S+@\S+\.\S+/.test(dummy) == false){
+                alert('Email형식 아님');
+            }
+            
+            
+        });
+    </script>
+</body>
+</html>
