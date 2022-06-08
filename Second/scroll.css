@@ -1,0 +1,30 @@
+
+.navbar{
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+}
+
+.test1{
+    border: 2px solid dodgerblue;
+    height: 1000px;
+}
+
+.test2{
+    border: 2px solid aquamarine;
+    height: 500px;
+}
+
+.test3{
+    border: 2px solid blueviolet;
+    height: 500px;
+}
+
+.navbar-brand{
+    font-size: 30px;
+    transition: all 1s;
+}
+
+.lorem{
+    border: 3px solid black;
+}
