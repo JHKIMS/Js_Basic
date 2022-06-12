@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array, Object 연습하기</title>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="card p-3">
+            <span class="car-title">상품명</span>
+            <span class="car-price">가격</span>
+        </div>
+    </div>
+
+    <script>
+        var car = ['소나타', 5000, 'White']; // array
+        var some = {name:'테슬라', price: [5000,3000,2000] }; // object
+        console.log(car[0]);
+
+        document.querySelector('.car-title').innerHTML = some.name;  // some['name']  'name' 부분에 변수같은 것을 넣을 수 있다.
+        document.querySelector('.car-price').innerHTML = some.price[1];
+    </script>
+</body>
+</html>
