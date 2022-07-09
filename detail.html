@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select 인풋</title>
+    <!-- jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <style>
+        .form-hide {
+            display: none;
+        }
+    </style>
+
+    <form class="container my-5 form-group">
+        <p>상품선택</p>
+        <select class="form-select mt-2">
+            <option>모자</option>
+            <option>셔츠</option>
+            <option>바지</option>
+        </select>
+
+        <select class="form-select mt-2 form-hide">
+            <option></option>
+            <option></option>
+            <option></option>
+        </select>
+    </form>
+
+
+    <div id="test">
+
+    </div>
+    <script>
+        // document.querySelectorAll('.form-select')[0].addEventListener('input', function () {
+        //     if (document.querySelectorAll('.form-select')[0] == '셔츠') {
+        //         document.querySelectorAll('.form-select')[1].classList.remove('form-hide');
+        //     }
+        // })
+
+        var pants = [28, 30, 32];
+        var shirts = [95, 100, 105];
+
+        
+        $('.form-select').eq(0).on('input', function (e) {
+                let value = e.currentTarget.value; // 위의 $('.form-select').eq(0) 이 부분과 동일하다.
+                console.log(value);
+                if (value == '셔츠') { // 유저가 셔츠를 선택하면
+                    $('.form-select').eq(1).removeClass('form-hide'); // 셔츠를 선택하면 95,100을 선택하는 창을 띄워준다.
+                }
+                else if(value == '바지'){ // 바지 눌렀다가 셔츠 누르면 바지 값이 그대로 남아있다 - 해결해야함.
+                    $('.form-select').eq(1).removeClass('form-hide');
+                    $('.form-select').eq(1).html('');
+
+                    pants.forEach(function(a){ //array에 붙일 수 있는 forEach반복문  :: a는 pants안의 값
+                        console.log("check");
+                        $('.form-select').eq(1).append(`<option>${a}</option>`);
+                    });
+
+                    // arrow function의 this와 그냥 this의 차이 정리하기.
+
+
+                    /*var short = `<option>28</option> 첫 번째 바지 사이즈 넣는 방법
+                    <option>30</option>`;
+                    $('.form-select').eq(1).append(short); */
+                }
+            })
+        
+            var sample = '<p>안녕</p>';
+            document.querySelector('#test').insertAdjacentHTML('beforeend',sample); // beforeend에 대해서 검색, 기존 코드 밑에 추가해준다.
+            
+            // 제이쿼리
+            $('#test').append(sample);
+
+            //오브젝트 반복문
+            var obj = {name: 'kim', age:20}
+            for(var key in obj){ // obj갯수만큼 반복문을 돌린다. key는 name이 되고 , age가 된다.
+                console.log(1);
+                console.log(obj[key]);
+            }
+    </script>
+
+</body>
+
+</html>

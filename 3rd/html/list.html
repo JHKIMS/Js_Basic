@@ -42,11 +42,12 @@
           { id : 2, price : 60000, title : 'Black Monastery' }
         ];
 
+        // 반복문 사용해서 다 3가지 다 집어넣기.
         document.querySelectorAll('.card-body h5')[0].innerHTML = products[0].title;
         document.querySelectorAll('.card-body p')[0].innerHTML = products[0].price;
 
         var test = '안녕';
-        console.log(`문자${test}문자 나오나`)
+        console.log(`문자${test}문자 나오나`) //문자 사이에 변수 삽입하는 경우
       </script> 
 </body>
 </html>
