@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax처리하기</title>
+    <!-- jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- 남은 부분 :: 중복되는 코드 줄이고, 더보기 버튼을 2번째 클릭하면 7,8,9를 나오게 만들자. -->
+    
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-4">
+                <img src="https://via.placeholder.com/600" class="w-100">
+                <h5>Card title</h5>
+                <p>가격 : 70000</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+
+    <script>
+        $('#more').click(function () {
+            $.get('https://codingapple.github.io/js/more1.json')
+                .done((data) => {
+                    console.log(data);
+
+                    data.forEach((a, i)=>{
+                        var template =
+                        `<div class = "col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data[i].title}</h5>
+                            <p>${data[i].price}</p>
+                        </div>`;
+                    $('.row').append(template)
+                    })
+                })
+        })
+    </script>
+
+
+    <script>
+        var products = [{
+                id: 0,
+                price: 70000,
+                title: 'Blossom Dress'
+            },
+            {
+                id: 1,
+                prcie: 50000,
+                title: 'SpringField Shirt'
+            },
+            {
+                id: 2,
+                price: 60000,
+                title: 'Black Monastery'
+            }
+        ];
+
+        products.forEach((a, i) => { // i는 반복문이 돌때마다 0부터 1씩 증가하는 정수이다.
+            var template =
+                `<div class = "col-sm-4">
+                <img src="https://via.placeholder.com/600" class="w-100">
+                <h5>${a.title}</h5>
+                <p>${a.price}</p>
+            </div>`;
+            $('.row').append(template)
+        })
+    </script>
+</body>
+
+</html>
