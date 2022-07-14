@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Ajax처리하기</title>
+    <!-- jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- 남은 부분 :: 중복되는 코드 줄이고, 더보기 버튼을 2번째 클릭하면 7,8,9를 나오게 만들자. -->
+    <!-- localStorage강의 다시 복슶해보자. 그리고 응용문제 풀기-->
+    
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+
+    <div class="container">
+        <button class="btn btn-danger" id="more">더보기</button>
+    </div>
+
+
+    <script>
+        // 더보기 처리하는 js코드
+        $('#more').click(function () {
+            $.get('https://codingapple1.github.io/js/more1.json')
+                .done((data) => {
+                    console.log(data);
+
+                    data.forEach((a, i)=>{
+                        var template =
+                        `<div class = "col-sm-4">
+                            <img src="https://via.placeholder.com/600" class="w-100">
+                            <h5>${data[i].title}</h5>
+                            <p>${data[i].price}</p>
+                        </div>`;
+                    $('.row').append(template)
+                    })
+                })
+        })
+    </script>
+
+
+    <script>
+        var products = [
+                        {id:0, price:70000,title:'Blossom Dress'},
+                        {id:0, price:55000,title:'SampleTest'},
+                        {id:2, price:60000,title:'Grey Monastery'}
+                    ];
+
+
+        products.forEach((a, i) => { // i는 반복문이 돌때마다 0부터 1씩 증가하는 정수이다.
+            var template =
+                `<div class = "col-sm-4">
+                <img src="https://via.placeholder.com/600" class="w-100">
+                <h5>${a.title}</h5>
+                <p>가격 : ${a.price}</p>
+                <button class="buy">구매</button>
+            </div>`;
+            $('.row').append(template)
+        })
+
+        /*
+        구매버튼 누르면
+        지금누른버튼 윗윗 글자를 가져와서
+        localStorage에 [글자] 저장
+        */
+       $('.buy').click(function(e){
+           var something = $(e.target).siblings('h5').text(); // siblings :: 형제태그를 가져온다.
+
+           // 만약 이미 cart라는 항목이 있으면 수정하기
+           if(localStorage.getItem('cart') != null){
+            var dum1 = JSON.parse(localStorage.cart);
+            dum1.push(something);
+            localStorage.setItem('cart', JSON.stringify(dum1));
+            // console.log(dum1);
+           }
+           else{
+           localStorage.setItem('cart', JSON.stringify([something]))
+        //    e.target.previousElementSibling.previousElementSibling
+            }
+       })
+
+
+        
+    </script>
+</body>
+
+</html>
