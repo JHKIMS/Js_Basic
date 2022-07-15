@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch_Test</title>
+</head>
+<body>
+
+    <div id="quiz">
+        <h4>고르기</h4>
+
+        <button>1일번</button>
+        <button>2이번</button>
+        <button>3삼번</button>
+
+    </div>
+
+    <script>
+        document.querySelector('#quiz').addEventListener('click',function(e){
+            switch(e.target.innerHTML){
+                case '1일번':
+                    alert('일번이 좋다');
+                    break;
+                case '2이번':
+                    alert('이번이 좋다');
+                    break;
+                case '3삼번':
+                    alert('삼번이 좋다');
+                    break;
+                default:
+                    alert('없다');
+                    break;
+            }
+        })
+
+
+
+
+        let some = 2+2+3;
+        switch(some){
+            case 3:
+                alert('some이 3이다.');
+                break
+            case 4:
+                alert('some이 4다');
+                break
+            default:
+                alert('아무것도 반영X.');
+        }
+    </script>
+</body>
+</html>

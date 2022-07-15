@@ -23,15 +23,15 @@
     </div>
 
     <script>
-        var startPoint = 0;
-        var click = false;
+        let startPoint = 0;
+        let click = false;
         $('.slide-box').eq(0).on('mousedown', function(e){
             startPoint = e.clientX;
             click = true;
         });
         $('.slide-box').eq(0).on('mousemove', function(e){
           if(click==true){
-            console.log(e.clientX-startPoint)
+            console.log('-시작점 : ',e.clientX-startPoint)
             $('.slide-container').css('transform', `translateX(${e.clientX - startPoint}px)`)
           }
         });
@@ -43,7 +43,7 @@
             } else{
                 $('.slide-container').css('transition','all 0.5s').css('transform','translateX(0vw)');
             }
-            setTimeout(()=>{
+            setTimeout(() => {
                 $('.slide-container').css('transition', 'none')
             }, 500)
         })
