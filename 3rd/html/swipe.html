@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스와이프 만들기</title>
+    <link href="../css/swipe.css" rel="stylesheet">
+    <!-- jquery 라이브러리 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div style="overflow: hidden;">
+        <div class="slide-container">
+            <div class="slide-box">
+                <img src="../../img/3949079.png">
+            </div>
+            <div class="slide-box">
+                <img src="../../img/3949091.jpeg">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var startPoint = 0;
+        var click = false;
+        $('.slide-box').eq(0).on('mousedown', function(e){
+            startPoint = e.clientX;
+            click = true;
+        });
+        $('.slide-box').eq(0).on('mousemove', function(e){
+          if(click==true){
+            console.log(e.clientX-startPoint)
+            $('.slide-container').css('transform', `translateX(${e.clientX - startPoint}px)`)
+          }
+        });
+        $('.slide-box').eq(0).on('mouseup', function(e){
+            click = false;
+
+            if(e.clientX - startPoint < -100){
+                $('.slide-container').css('transition','all 0.5s').css('transform','translateX(-100vw)');
+            } else{
+                $('.slide-container').css('transition','all 0.5s').css('transform','translateX(0vw)');
+            }
+            setTimeout(()=>{
+                $('.slide-container').css('transition', 'none')
+            }, 500)
+        })
+    </script>
+</body>
+</html>
